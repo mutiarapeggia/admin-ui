@@ -1,49 +1,79 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Email:", email);
+    console.log("Password:", password);
+  };
 
   return (
-    <>
-      <div className="min-h-screen bg-pink-400 flex flex-col items-center justify-center text-center">
-        <div className="flex items-center justify-center space-x-8 mb-12">
-          <a href="https://vite.dev" target="_blank">
-            <img
-              src={viteLogo}
-              className="m-24 h-24 animate-spin"
-              alt="Vite logo"
-              style={{ animationDuration: "10s" }}
-            />
-          </a>
-          <a href="https://react.dev" target="_blank">
-            <img
-              src={reactLogo}
-              className="m-24 h-24 animate-spin"
-              alt="React logo"
-              style={{ animationDuration: "10s" }}
-            />
-          </a>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="flex bg-white rounded-lg shadow-lg overflow-hidden max-w-4xl w-full">
+        {/* Bagian Kiri - Gambar dari Unsplash */}
+        <div className="hidden md:block md:w-1/2">
+          <img
+            src="https://tse2.mm.bing.net/th/id/OIP.hQIjAZa3G5p9-rHdvawyHAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3"
+            alt="Food"
+            className="h-full w-full object-cover"
+          />
         </div>
-        <h1 className="text-white text-8xl font-bold mb-16">Vite + React</h1>
-        <div className="text-sm space-y-6 mb-8">
-          <button
-            onClick={() => setCount((count) => count + 1)}
-            className="bg-pink-900 text-white py-2 px-6 rounded-lg text-lg"
-          >
-            count is {count}
-          </button>
-          <p className="text-white">
-            Edit <code>src/App.jsx</code> and save to test HMR
-          </p>
+
+        {/* Bagian Kanan - Form Login */}
+        <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
+          <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Masukkan email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                placeholder="Masukkan password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-pink-500 text-white py-2 px-4 rounded-md hover:bg-pink-600 transition duration-200 font-medium"
+            >
+              Login
+            </button>
+          </form>
         </div>
-        <p className="text-white">
-          Click on the Vite and React logos to learn more
-        </p>
       </div>
-    </>
+    </div>
   );
 }
 
