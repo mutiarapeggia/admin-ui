@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { use } from "react";
 
-function Usecard(props) {
+function PostCard(props) {
   const { name, email, street, city, ...rest } = props;
   const [clicked, setClicked] = useState(false);
   // Fungsi handler
@@ -10,7 +10,11 @@ function Usecard(props) {
   console.log(Object.entries(rest));
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow hover:shadow-md transition-shadow">
+    <div
+      className={`p-4 rounded-lg shadow-md border transition-transform duration-200 h-full
+      ${clicked ? "bg-pink-100 scale-105" : "bg-white"}
+      hover:scale-105`}
+    >
       <h2 className="text-xl font-semibold text-gray-800 mb-2">{name}</h2>
       <p className="text-gray-600">
         <span className="font-medium">Email:</span> {email}
@@ -29,7 +33,7 @@ function Usecard(props) {
 
       <button
         className={`${
-          clicked ? "bg-special-green" : "bg-gray-01"
+          clicked ? "bg-special-red2" : "bg-gray-01"
         } text-white p-2 rounded-md`}
         onClick={() => setClicked(true)}
       >
